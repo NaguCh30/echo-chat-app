@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import FullscreenListener from "@/components/FullscreenListener";
+import FullScreenListener from "@/components/FullscreenListener";
 
 import LoginLanding from "@/pages/landing-page/LoginLanding";
 import Login from "@/pages/login-page/Login";
