@@ -27,4 +27,4 @@ function FullscreenListener() {
   return null;
 }
 
-export default FullscreenListener;
+export default FullScreenListener;
