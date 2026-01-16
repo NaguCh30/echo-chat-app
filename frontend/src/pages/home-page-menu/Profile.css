@@ -1,0 +1,157 @@
+.profile-screen {
+  min-height: 100vh;
+  background: #f6f7f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header {
+  height: 56px;
+  padding: 0 16px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #e0e3e8;
+}
+
+.profile-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1e21;
+  margin: 0;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.back-btn:active {
+  background: #f2f4f7;
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  margin: 32px auto 28px;
+  border-radius: 50%;
+  background: #3f8cff;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-field {
+  background: #ffffff;
+  margin: 0 16px;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.profile-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #65676b;
+  margin-bottom: 6px;
+}
+
+.profile-name-row {
+  display: flex;
+  gap: 8px;
+}
+
+.profile-name-row input {
+  flex: 1;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e0e3e8;
+  background: #f2f4f7;
+  font-size: 15px;
+  color: #1c1e21;
+}
+
+.edit-btn {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: none;
+  background: #e9edf2;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c1e21;
+  cursor: pointer;
+}
+
+.edit-btn:active {
+  background: #dfe3ea;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1e21;
+}
+
+.modal input {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e0e3e8;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.modal input:focus {
+  border-color: #3f8cff;
+  outline: none;
+}
+
+/* reusable global button styles */
+.btn.primary {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background: #3f8cff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn.primary:disabled {
+  opacity: 0.6;
+}

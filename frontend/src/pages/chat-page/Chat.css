@@ -1,0 +1,278 @@
+.chat-screen {
+  height: 100vh;
+  background: #f6f7f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  height: 56px;
+  padding: 0 12px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e3e8;
+}
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e9edf2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.chat-name {
+  font-size: 19px;
+  font-weight: 600;
+  color: #1c1e21;
+}
+
+.back-btn,
+.chat-menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.back-btn:active,
+.chat-menu-btn:active {
+  background: #f2f4f7;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.message.incoming {
+  justify-content: flex-start;
+}
+
+.message.outgoing {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  background: #f2f4f7;
+  color: #1c1e21;
+}
+
+.message.outgoing .bubble {
+  background: #b7babd;
+  border-top-right-radius: 4px;
+}
+
+.message.incoming .bubble {
+  border-top-left-radius: 4px;
+
+  background: #e0e3e8;
+}
+
+.time {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  text-align: right;
+  color: #65676b;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+.status-dot.gray {
+  background: #9aa0a6;
+}
+
+.status-dot.yellow {
+  background: #fbbf24;
+}
+
+.status-dot.green {
+  background: #22c55e;
+}
+
+.chat-input {
+  height: 56px;
+  padding: 0 10px;
+  background: #ffffff;
+  border-top: 1px solid #e0e3e8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid #e0e3e8;
+  font-size: 14px;
+  outline: none;
+}
+
+.chat-input input:disabled {
+  background: #f2f4f7;
+}
+
+.attach-btn,
+.send-btn {
+  background: none;
+  border: 1px solid #e0e3e8;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn {
+  background: #3f8cff;
+  color: white;
+  border: none;
+}
+
+.send-btn:disabled {
+  opacity: 0.6;
+}
+
+.chat-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.chat-menu {
+  position: absolute;
+  top: 56px;
+  right: 12px;
+  width: 180px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.chat-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chat-menu-list li {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.chat-menu-list li:hover {
+  background: #f2f4f7;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.chat-action-modal {
+  width: 90%;
+  max-width: 320px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.chat-action-modal input {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e0e3e8;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn--danger-light {
+  background: #f6f7f9;
+  color: #65676b;
+  border: 1px solid #e0e3e8;
+}
+
+.btn--danger-light:hover {
+  background: #f2f4f7;
+}
+
+.btn--danger {
+  background: #fdecea;
+  color: #c62828;
+  border: 1px solid #f5c6cb;
+}
+
+.btn--danger:hover {
+  background: #f9d6d5;
+}
+
+.btn--danger-strong {
+  background: #e53935;
+  color: #ffffff;
+  border: none;
+}
+
+.btn--danger-strong:hover {
+  background: #d32f2f;
+}

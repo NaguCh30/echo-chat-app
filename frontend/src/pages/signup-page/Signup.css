@@ -1,0 +1,95 @@
+.signup-screen {
+  min-height: 100vh;
+  background: #f6f7f9;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* HEADER */
+.signup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.signup-back-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #1c1e21;
+  line-height: 1;
+}
+
+.signup-title {
+  flex: 1;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1c1e21;
+  margin-right: 26px; /* balances back button space */
+}
+
+/* FORM CARD */
+.signup-form {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.signup-form label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #65676b;
+}
+
+.signup-form input {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e0e3e8;
+  font-size: 15px;
+  outline: none;
+}
+
+.signup-form input:focus {
+  border-color: #3f8cff;
+}
+
+.signup-form .btn {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.signup-alt {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #65676b;
+  text-align: center;
+}
+
+.signup-link {
+  color: #3f8cff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+
+/* DESKTOP CENTERING */
+@media (min-width: 600px) {
+  .signup-screen {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,30 @@
+/*
+.otp-screen {
+  min-height: 100vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.otp-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.otp-inputs input {
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+*/
