@@ -161,7 +161,9 @@ function Home() {
   return (
     <div className="home-screen">
       <header className="home-header">
-        <h2 className="home-greeting">{userName || ""}</h2>
+        <h2 className="home-greeting">
+          Hello, <span>{userName || ""}</span>
+        </h2>
         <button
           className="home-menu-btn"
           onClick={() => setIsSidebarOpen(true)}

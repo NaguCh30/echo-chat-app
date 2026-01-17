@@ -15,9 +15,16 @@
 }
 
 .home-greeting {
+  font-family: "Pacifico", cursive;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400; 
   color: #1c1e21;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.home-greeting span {
+  margin-left: 4px;
 }
 
 .home-menu-btn {
