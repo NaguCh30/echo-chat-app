@@ -20,10 +20,14 @@ function Chat() {
   const [nicknameInput, setNicknameInput] = useState("");
   const [savingName, setSavingName] = useState(false);
 
+  const [sending, setSending] = useState(false);
+
   const token = localStorage.getItem("token");
   const loggedInUserId = token
     ? JSON.parse(atob(token.split(".")[1])).userId
     : null;
+
+  const inputRef = useRef(null);//to make chat input focused, and making keyboard no disappear after click send button
 
   useEffect(() => {
     if (!chatId) return;
@@ -133,9 +137,23 @@ function Chat() {
   }, [messages]);
 
   const handleSendMessage = async () => {
-    if (!text.trim()) return;
-    await api.post(`/chat/${chatId}/message`, { text });
-    setText("");
+    if (!text.trim() || sending) return;
+
+    try {
+      setSending(true);
+
+      await api.post(`/chat/${chatId}/message`, { text });
+
+      setText("");
+      // keeps keyboard open
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+    } catch (err) {
+      console.error("Failed to send message", err);
+    } finally {
+      setSending(false);
+    }
   };
 
 
@@ -288,6 +306,7 @@ function Chat() {
       <div className="chat-input">
         <button className="attach-btn">📎</button>
         <input
+          ref={inputRef}
           type="text"
           placeholder={
             chatDetails?.isBlocked
@@ -297,15 +316,16 @@ function Chat() {
           value={text}
           disabled={chatDetails?.isBlocked}
           onChange={(e) => setText(e.target.value)}
-          onKeyDown={(e) => 
-            e.key === "Enter" &&
-            !chatDetails?.isBlocked&& 
-            handleSendMessage()
-          }
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !sending && !chatDetails?.isBlocked) {
+              e.preventDefault();
+              handleSendMessage();
+            }
+          }}
         />
         <button 
           className="send-btn" 
-          disabled={chatDetails?.isBlocked}
+          disabled={sending || chatDetails?.isBlocked}
           onClick={handleSendMessage}
         >
           ➤
