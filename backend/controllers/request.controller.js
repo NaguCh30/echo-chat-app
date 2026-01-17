@@ -86,8 +86,78 @@ exports.getReceivedRequests = async (req, res) => {
   res.json(requests);
 };
 
-// accept request
+
+//accept request new
 exports.acceptRequest = async (req, res) => {
+  const request = await ContactRequest.findById(req.params.id);
+
+  if (!request || request.receiver.toString() !== req.userId) {
+    return res.status(404).json({ message: "Request not found" });
+  }
+
+  const senderId = request.sender;
+  const receiverId = request.receiver;
+
+  // Find or create chat (IMPORTANT)
+  let chat = await Chat.findOne({
+    participants: { $all: [senderId, receiverId] },
+  });
+
+  if (!chat) {
+    chat = await Chat.create({
+      participants: [senderId, receiverId],
+    });
+  }
+
+  // UPSERT contact: sender → receiver
+  await Contact.findOneAndUpdate(
+    {
+      owner: senderId,
+      contactUser: receiverId,
+    },
+    {
+      owner: senderId,
+      contactUser: receiverId,
+      nickname: request.senderSetName,
+      isDeleted: false,
+      isBlocked: false,
+      clearedAt: null,
+    },
+    { upsert: true, new: true }
+  );
+
+  // UPSERT contact: receiver → sender
+  await Contact.findOneAndUpdate(
+    {
+      owner: receiverId,
+      contactUser: senderId,
+    },
+    {
+      owner: receiverId,
+      contactUser: senderId,
+      nickname: null,
+      isDeleted: false,
+      isBlocked: false,
+      clearedAt: null,
+    },
+    { upsert: true, new: true }
+  );
+
+  //  Mark request accepted
+  request.status = "accepted";
+  await request.save();
+
+  //  Socket notify
+  const io = require("../socket").getIO();
+  io.to(`user:${senderId}`).emit("chatCreated", chat);
+  io.to(`user:${receiverId}`).emit("chatCreated", chat);
+
+  res.json({ message: "Request accepted", chat });
+};
+
+
+// accept request old, creating multiple contacts -> wrong
+/*exports.acceptRequest = async (req, res) => {
   const request = await ContactRequest.findById(req.params.id);
 
   if (!request || request.receiver.toString() !== req.userId) {
@@ -122,6 +192,7 @@ exports.acceptRequest = async (req, res) => {
 
   res.json({ message: "Request accepted", chat });
 };
+*/
 
 
 // Reject request

@@ -91,6 +91,23 @@ function Home() {
     fetchMe();
   }, []);
 
+  useEffect(() => {
+    const socket = getSocket();
+
+    const handleChatDeleted = ({ chatId }) => {
+      setChats((prev) =>
+        prev.filter((chat) => chat._id !== chatId)
+      );
+    };
+
+    socket.on("chatDeleted", handleChatDeleted);
+
+    return () => {
+      socket.off("chatDeleted", handleChatDeleted);
+    };
+  }, []);
+
+
   const handleSendInvitation = async () => {
     if (!email.trim() || !contactName.trim()) {
       setError("Email and name are required");

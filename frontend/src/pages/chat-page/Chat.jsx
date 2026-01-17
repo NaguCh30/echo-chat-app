@@ -110,6 +110,25 @@ function Chat() {
   }, [chatId]);
 
   useEffect(() => {
+    if (!chatId) return;
+
+    const socket = getSocket();
+
+    const handleChatDeleted = ({ chatId: deletedChatId }) => {
+      if (deletedChatId === chatId) {
+        navigate("/home");
+      }
+    };
+
+    socket.on("chatDeleted", handleChatDeleted);
+
+    return () => {
+      socket.off("chatDeleted", handleChatDeleted);
+    };
+  }, [chatId, navigate]);
+
+
+  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
