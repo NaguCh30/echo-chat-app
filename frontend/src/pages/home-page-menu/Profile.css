@@ -10,16 +10,23 @@
   padding: 0 16px;
   background: #ffffff;
   display: flex;
+  position: relative;
   align-items: center;
-  gap: 12px;
   border-bottom: 1px solid #e0e3e8;
 }
 
-.profile-header h2 {
+.profile-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin: 0;
   font-size: 18px;
   font-weight: 600;
   color: #1c1e21;
-  margin: 0;
+
+  white-space: nowrap; 
+  pointer-events: none; 
 }
 
 .back-btn {
@@ -30,6 +37,7 @@
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 1;
 }
 
 .back-btn:active {

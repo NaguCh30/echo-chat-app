@@ -62,7 +62,7 @@ function Profile() {
         <button className="back-btn" onClick={() => navigate(-1)}>
           ‹
         </button>
-        <h2>Profile Settings</h2>
+        <h2 className="profile-title">Profile Settings</h2>
       </header>
 
       {/* AVATAR */}
