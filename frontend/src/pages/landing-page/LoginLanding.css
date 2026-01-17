@@ -1,5 +1,5 @@
 .login-screen.landing {
-  min-height: 100vh;
+  height: var(--app-height);
   /* overflow: hidden; */
   background: #f6f7f9;
   display: flex;

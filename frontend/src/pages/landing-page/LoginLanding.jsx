@@ -15,15 +15,6 @@ function LoginPage() {
     toast("Welcome! Please sign in to continue.");
   };
 
-  const handleFullscreen = async () => {
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-      }
-    } catch (err) {
-      toast.error("Fullscreen not supported");
-    }
-  };
 
   return (
     <div className="login-screen landing">
@@ -34,13 +25,6 @@ function LoginPage() {
           onClick={handleInfoClick}
         >
           <FontAwesomeIcon icon={faInfoCircle} />
-        </button>
-        <button
-          className="fullscreen-icon"
-          aria-label="Enter fullscreen"
-          onClick={handleFullscreen}
-        >
-          <FontAwesomeIcon icon={faExpand} />
         </button>
       </div>
 

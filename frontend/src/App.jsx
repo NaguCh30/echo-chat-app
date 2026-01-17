@@ -1,8 +1,7 @@
 import { Toaster } from "react-hot-toast";
+import ViewportListener from "@/components/ViewportListener";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import FullScreenListener from "@/components/FullScreenListener";
 
 import LoginLanding from "@/pages/landing-page/LoginLanding";
 import Login from "@/pages/login-page/Login";
@@ -22,10 +21,13 @@ import ChangePassword from "@/pages/home-page-menu/ChangePassword";
 
 import ProtectedRoute from "@/components/ProtectedRoute";
 
+import useViewportHeight from "@/hooks/useViewportHeight";
+
 function App() {
+  useViewportHeight();
   return (
     <BrowserRouter>
-      <FullScreenListener />
+      <ViewportListener />
       <Toaster
         toastOptions={{
           duration: 3000,

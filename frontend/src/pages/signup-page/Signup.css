@@ -1,5 +1,5 @@
 .signup-screen {
-  min-height: 100vh;
+  height: var(--app-height);
   background: #f6f7f9;
   padding: 24px;
   display: flex;
